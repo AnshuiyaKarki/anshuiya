@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Question Paper</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff; /* AliceBlue background */
+            color: #333; /* Dark grey text color */
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff; /* White background for content */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #004d99; /* Dark blue color */
+            font-size: 2em;
+            border-bottom: 2px solid #004d99;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question-number {
+            font-weight: bold;
+            color: #0056b3; /* Lighter blue color */
+            font-size: 1.2em;
+        }
+        .question-text {
+            margin: 5px 0;
+            font-size: 1.2em;
+            color: #003d80; /* Even darker blue color */
+        }
+        .options {
+            margin: 10px 0;
+            background-color: #f9f9f9; /* Light grey background */
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .option {
+            margin-bottom: 5px;
+            background-color: #e6f7ff; /* Light blue background */
+            padding: 5px;
+            border-radius: 5px;
+        }
+        .option input {
+            margin-right: 10px;
+        }
+        .feedback {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .feedback.correct {
+            color: #28a745; /* Green color for correct answers */
+        }
+        .feedback.wrong {
+            color: #dc3545; /* Red color for wrong answers */
+        }
+        .feedback.warn {
+            color: #ffc107; /* Amber color for warnings */
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 1.2em;
+            color: #fff;
+            background-color: #004d99; /* Dark blue color */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .submit-btn:hover {
+            background-color: #003d80; /* Darker blue for hover effect */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Personalized Question Paper</h1>
+        <form id="questionForm">
+            <div class="question">
+                <div class="question-number">1.</div>
+                <div class="question-text">What is my name?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q1" value="A"> A. Anshuiya Karki
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q1" value="B"> B. Anshuiya Sharma
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q1" value="C"> C. Anshuiya Thapa
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q1" value="D"> D. Anshuiya Patel
+                    </div>
+                    <div id="feedback1" class="feedback"></div>
+                </div>
+            </div>
+            <div class="question">
+                <div class="question-number">2.</div>
+                <div class="question-text">Where do I study?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q2" value="A"> A. NIT Meghalaya
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q2" value="B"> B. IIT Bombay
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q2" value="C"> C. MIT
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q2" value="D"> D. Harvard University
+                    </div>
+                    <div id="feedback2" class="feedback"></div>
+                </div>
+            </div>
+            <div class="question">
+                <div class="question-number">3.</div>
+                <div class="question-text">What department am I in?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q3" value="A"> A. Computer Science and Engineering
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q3" value="B"> B. Electrical Engineering
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q3" value="C"> C. Mechanical Engineering
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q3" value="D"> D. Civil Engineering
+                    </div>
+                    <div id="feedback3" class="feedback"></div>
+                </div>
+            </div>
+            <div class="question">
+                <div class="question-number">4.</div>
+                <div class="question-text">What is my favorite food?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q4" value="A"> A. Momo
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q4" value="B"> B. Pizza
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q4" value="C"> C. Sushi
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q4" value="D"> D. Burger
+                    </div>
+                    <div id="feedback4" class="feedback"></div>
+                </div>
+            </div>
+            <div class="question">
+                <div class="question-number">5.</div>
+                <div class="question-text">Who is my favorite person?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q5" value="A"> A. My Mother
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q5" value="B"> B. My Father
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q5" value="C"> C. My Best Friend
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q5" value="D"> D. My Sibling
+                    </div>
+                    <div id="feedback5" class="feedback"></div>
+                </div>
+            </div>
+            <div class="question">
+                <div class="question-number">6.</div>
+                <div class="question-text">What is my favorite color?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q6" value="A"> A. Pink
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q6" value="B"> B. Blue
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q6" value="C"> C. Green
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q6" value="D"> D. Red
+                    </div>
+                    <div id="feedback6" class="feedback"></div>
+                </div>
+            </div>
+            <div class="question">
+                <div class="question-number">7.</div>
+                <div class="question-text">What is my favorite animal?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q7" value="A"> A. Dog
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q7" value="B"> B. Cat
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q7" value="C"> C. Elephant
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q7" value="D"> D. Tiger
+                    </div>
+                    <div id="feedback7" class="feedback"></div>
+                </div>
+            </div>
+            <div class="question">
+                <div class="question-number">8.</div>
+                <div class="question-text">What is my favorite season?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q8" value="A"> A. Winter
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q8" value="B"> B. Summer
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q8" value="C"> C. Spring
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q8" value="D"> D. Autumn
+                    </div>
+                    <div id="feedback8" class="feedback"></div>
+                </div>
+            </div>
+            <div class="question">
+                <div class="question-number">9.</div>
+                <div class="question-text">Where am I from?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q9" value="A"> A. Nepal
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q9" value="B"> B. India
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q9" value="C"> C. Bhutan
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q9" value="D"> D. Sri Lanka
+                    </div>
+                    <div id="feedback9" class="feedback"></div>
+                </div>
+            </div>
+            <div class="question">
+                <div class="question-number">10.</div>
+                <div class="question-text">Am I a morning or night person?</div>
+                <div class="options">
+                    <div class="option">
+                        <input type="radio" name="q10" value="A"> A. Morning
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q10" value="B"> B. Night
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q10" value="C"> C. Both
+                    </div>
+                    <div class="option">
+                        <input type="radio" name="q10" value="D"> D. Neither
+                    </div>
+                    <div id="feedback10" class="feedback"></div>
+                </div>
+            </div>
+            <button type="button" class="submit-btn" onclick="checkAnswers()">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function checkAnswers() {
+            var feedback = {
+                q1: 'A', // Correct answer for question 1
+                q2: 'A', // Correct answer for question 2
+                q3: 'A', // Correct answer for question 3
+                q4: 'A', // Correct answer for question 4
+                q5: 'A', // Correct answer for question 5
+                q6: 'A', // Correct answer for question 6
+                q7: 'A', // Correct answer for question 7
+                q8: 'A', // Correct answer for question 8
+                q9: 'A', // Correct answer for question 9
+                q10: 'A'  // Correct answer for question 10
+            };
+
+            var questions = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10'];
+
+            questions.forEach(function(questionId) {
+                var selected = document.querySelector('input[name="' + questionId + '"]:checked');
+                var feedbackElement = document.getElementById('feedback' + questionId.slice(1));
+                if (selected) {
+                    if (selected.value === feedback[questionId]) {
+                        feedbackElement.textContent = 'Correct!';
+                        feedbackElement.className = 'feedback correct';
+                    } else {
+                        feedbackElement.textContent = 'Wrong answer. The correct answer is option ' + feedback[questionId] + '.';
+                        feedbackElement.className = 'feedback wrong';
+                    }
+                } else {
+                    feedbackElement.textContent = 'Please select an answer.';
+                    feedbackElement.className = 'feedback warn';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
